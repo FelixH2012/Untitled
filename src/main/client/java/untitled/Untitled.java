@@ -7,6 +7,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.untitled.initializeable.InitializeInitialize;
+
 @Mod(Untitled.CLIENT_NAME)
 public class Untitled {
 
@@ -16,6 +18,8 @@ public class Untitled {
 
     public static Untitled singleton;
 
+    private InitializeInitialize initialize;
+
     public Untitled() {
         singleton = this;
         this.register();
@@ -23,6 +27,7 @@ public class Untitled {
 
     private void initialize(final FMLCommonSetupEvent event) {
         LOGGER.info("Initialized " + CLIENT_NAME);
+        initialize = new InitializeInitialize();
     }
 
     private void register() {
