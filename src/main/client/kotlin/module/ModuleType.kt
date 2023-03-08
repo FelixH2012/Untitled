@@ -1,4 +1,4 @@
-package de.felix.untitled.module
+package kotlin.module
 
 /*
 Kotlin's Enum classes are looking way better than Java´s tbh.

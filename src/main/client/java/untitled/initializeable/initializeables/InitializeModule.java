@@ -1,6 +1,7 @@
-package de.felix.untitled.initializeable.initializeables;
+package java.untitled.initializeable.initializeables;
 
-import de.felix.untitled.initializeable.Initializer;
+
+import java.untitled.initializeable.Initializer;
 
 public class InitializeModule implements Initializer {
 

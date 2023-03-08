@@ -1,4 +1,7 @@
-package de.felix.untitled.module;
+package java.untitled.module;
+
+
+import kotlin.module.ModuleType;
 
 public @interface ModuleData {
 
