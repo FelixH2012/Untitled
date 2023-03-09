@@ -18,16 +18,31 @@ public class EventRegister {
                 if (!field.canAccess(eventToListen)) //Forces field to be accessible
                     field.setAccessible(true);
 
-                val eventType = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
+                val type = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
 
                 val callback = (EventListener<?>) field.get(eventToListen);
 
-                if (storageMap.containsKey(eventType)) {
-                    val storages = storageMap.get(eventType);
+                if (storageMap.containsKey(type)) {
+                    val storages = storageMap.get(type);
                     storages.add(new EventStorage<>(eventToListen, callback));
                 } else
-                    storageMap.put(eventType, new ArrayList<>(Collections.singletonList(new EventStorage<>(eventToListen, callback))));
+                    storageMap.put(type, new ArrayList<>(Collections.singletonList(new EventStorage<>(eventToListen, callback))));
             }
+        }
+        this.update();
+    }
+
+    private void update() {
+        for (final Type type : storageMap.keySet()) {
+            val storages = storageMap.get(type);
+
+            //Cant use lombok they got autism
+            final List<EventListener<?>> callbacks = new ArrayList<>(storages.size());
+
+            storages.forEach(eventStorage -> callbacks.add(eventStorage.getCallback()));
+
+            callbackMap.put(type, callbacks);
+
         }
     }
 
