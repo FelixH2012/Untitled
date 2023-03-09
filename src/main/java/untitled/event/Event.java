@@ -1,4 +1,4 @@
-package java.untitled.event;
+package untitled.event;
 
 import lombok.Getter;
 import lombok.Setter;

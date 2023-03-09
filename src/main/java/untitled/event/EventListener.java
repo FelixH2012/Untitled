@@ -1,4 +1,4 @@
-package java.untitled.event;
+package untitled.event;
 
 public interface EventListener<T> {
     void call(T event);

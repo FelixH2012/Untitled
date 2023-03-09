@@ -1,6 +1,5 @@
-package java.untitled.module;
+package untitled.module;
 
-import kotlin.module.ModuleType;
 
 public class Module {
 

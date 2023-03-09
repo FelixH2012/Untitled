@@ -1,4 +1,4 @@
-package java.untitled.initializeable;
+package untitled.initializeable;
 
 import org.reflections.Reflections;
 

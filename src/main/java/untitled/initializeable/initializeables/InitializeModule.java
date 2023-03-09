@@ -1,7 +1,7 @@
-package java.untitled.initializeable.initializeables;
+package untitled.initializeable.initializeables;
 
 
-import java.untitled.initializeable.Initializer;
+import untitled.initializeable.Initializer;
 
 public class InitializeModule implements Initializer {
 

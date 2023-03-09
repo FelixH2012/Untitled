@@ -1,7 +1,4 @@
-package java.untitled.module;
-
-
-import kotlin.module.ModuleType;
+package untitled.module;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
