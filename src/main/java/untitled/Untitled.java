@@ -7,8 +7,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import untitled.event.Event;
-import untitled.event.EventRegister;
+import untitled.event.forgeListener.ForgeClientListener;
+import untitled.event.system.Event;
+import untitled.event.system.EventRegister;
 import untitled.initializeable.InitializeInitialize;
 
 @Mod(Untitled.CLIENT_NAME)
@@ -31,13 +32,14 @@ public class Untitled {
 
     private void initialize(final FMLCommonSetupEvent event) {
         LOGGER.info("Initialized " + CLIENT_NAME);
-        initialize = new InitializeInitialize();
         this.eventRegister = new EventRegister<>();
+        initialize = new InitializeInitialize();
     }
 
     private void register() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::initialize);
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new ForgeClientListener());
     }
 
 }

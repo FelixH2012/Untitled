@@ -1,4 +1,4 @@
-package untitled.event;
+package untitled.event.system;
 
 import lombok.val;
 
@@ -10,17 +10,17 @@ import java.util.*;
 public class EventRegister<T> {
 
     private final Map<Type, List<EventStorage<T>>> storageMap = new HashMap<>();
-    private final Map<Type, List<untitled.event.EventListener<T>>> callbackMap = new HashMap<>();
+    private final Map<Type, List<EventListener<T>>> callbackMap = new HashMap<>();
 
     public void register(final Object eventToListen) throws IllegalAccessException {
         for (final Field field : eventToListen.getClass().getDeclaredFields()) {
-            if (field.getType() == untitled.event.EventListener.class) {
+            if (field.getType() == EventListener.class) {
                 if (!field.canAccess(eventToListen)) //Forces field to be accessible
                     field.setAccessible(true);
 
                 val type = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
 
-                val callback = (untitled.event.EventListener<T>) field.get(eventToListen);
+                val callback = (EventListener<T>) field.get(eventToListen);
 
                 if (storageMap.containsKey(type)) {
                     val storages = storageMap.get(type);
